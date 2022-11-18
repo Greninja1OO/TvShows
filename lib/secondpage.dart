@@ -27,8 +27,17 @@ class _SecondPageState extends State<SecondPage> {
       children: [
         FutureBuilder(
         future: api(widget.id.toString()),
-        builder: (context, snapshot) {if (snapshot.hasData ) return Column(children:[ for(var item in snapshot.data)new Row(children:[Image.network(
-          item['person']['image']['original'],height: 50,width: 50,),Text(item['person']['name'].toString(),style: TextStyle(color: Colors.white),)])]);
+        builder: (context, snapshot) {if (snapshot.hasData ) return Column(children:[ for(var item in snapshot.data)new Row(children:[
+          Padding(
+          padding: const EdgeInsets.fromLTRB(50, 10, 10, 10),
+          child: Image.network(
+            item['person']['image']['original'],height: 150,width: 150,),
+        ),Text(item['person']['name'].toString(),
+            style: TextStyle(
+                fontSize: 30,
+                color: Colors.white),)
+
+        ])]);
           else return Container();})
       ],
     )));

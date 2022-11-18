@@ -31,15 +31,18 @@ class _ThirdpageState extends State<Thirdpage> {
                   return Column(children:[ for(var item in snapshot.data) Row(
                     children:[
                       if(item['person']['image']==null)
-                        Container(height: 50,width: 50,color: Colors.black,)
+                        Container(height: 90,width: 50,color: Colors.black,)
                       else
                         Padding(
                           padding: const EdgeInsets.fromLTRB(50, 10, 10, 10),
                           child: Image.network(
                           item['person']['image']['original']
-                          ,height: 50,width: 50,),
+                          ,height: 150,width: 150,),
                         )
-                  ,Text(item['person']['name'].toString(),style: TextStyle(color: Colors.white),)])]);
+                  ,Text(item['person']['name'].toString(),
+                        style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.white),)])]);
                 else return Container();})
           ],
         )));

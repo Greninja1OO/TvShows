@@ -148,7 +148,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Row(mainAxisAlignment: MainAxisAlignment.center,children: [
-                Icon(Icons.star,color: Colors.yellow,),Text(snapshot.data['rating'].toString()+"/10")
+                Icon(Icons.star,color: Colors.yellow,),Text(snapshot.data['rating'].toString()+"/10",
+                  style: TextStyle(
+                      fontSize: 30
+                  ),
+                )
               ]),
               Text('Country:'+snapshot.data['country'],
                 style: TextStyle(
