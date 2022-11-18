@@ -36,7 +36,18 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("TV Maze"),
+        backgroundColor: Colors.black,
+        title: Text(
+          textAlign: TextAlign.justify,
+            style: TextStyle(
+              color: Colors.white54,
+              fontWeight: FontWeight.bold,
+              fontSize: 30.0,
+            ),
+
+
+
+            "TV Maze"),
       ),
       body: SingleChildScrollView(child: Column(
         children: [  Column(children:[
@@ -53,19 +64,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 labelStyle: TextStyle(color: Colors.black)),
             controller: myController,
           ),
-          ElevatedButton(
-            style: ButtonStyle(
-                backgroundColor:
-                MaterialStateProperty.all(Color(0xff44000000))),
-            onPressed: (() {
-              TV = myController.text;
-              myController.text =
-                  myController.text;
-              setState(() {});
-            }),
-            child: Text(
-              "Search",
-              style: TextStyle(color: Colors.white, fontSize: 30),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 10,10,10),
+            child: ElevatedButton(
+              style: ButtonStyle(
+                  backgroundColor:
+                  MaterialStateProperty.all(Color(0xff44000000))),
+              onPressed: (() {
+                TV = myController.text;
+                myController.text =
+                    myController.text;
+                setState(() {});
+              }),
+              child: Text(
+                "Search",
+                style: TextStyle(color: Colors.white, fontSize: 30),
+              ),
             ),
           ),
         ]),FutureBuilder(
@@ -83,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
         Row(
           children: [
             Image.network(
-                snapshot.data['image'],height: 500,width: 500,),
+                snapshot.data['image'],height: 500,width: 600,),
 
         Container(
 
@@ -150,12 +164,19 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
           ],
         ),
+        SizedBox.fromSize(
+          size: Size(10, 10)
+        ),
         Container(
-            child:
+          decoration: BoxDecoration(
+            color: Colors.blueGrey
+          )
+            ,child:
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
               child: Text('Summary:'+snapshot.data['summary'].replaceAll('<p',"").replaceAll(r'</p',"").replaceAll('<b>',"").replaceAll('</b',"").replaceAll('<p>',"").replaceAll('>',""),
                 style: TextStyle(
+
                     fontSize: 30
                 ),
               ),
