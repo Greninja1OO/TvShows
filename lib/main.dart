@@ -35,6 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black26,
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(
@@ -167,20 +168,23 @@ class _MyHomePageState extends State<MyHomePage> {
         SizedBox.fromSize(
           size: Size(10, 10)
         ),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.blueGrey
-          )
-            ,child:
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-              child: Text('Summary:'+snapshot.data['summary'].replaceAll('<p',"").replaceAll(r'</p',"").replaceAll('<b>',"").replaceAll('</b',"").replaceAll('<p>',"").replaceAll('>',""),
-                style: TextStyle(
+        Padding(
+          padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white
+            )
+              ,child:
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                child: Text('Summary:'+snapshot.data['summary'].replaceAll('<p',"").replaceAll(r'</p',"").replaceAll('<b>',"").replaceAll('</b',"").replaceAll('<p>',"").replaceAll('>',""),
+                  style: TextStyle(
 
-                    fontSize: 30
+                      fontSize: 30
+                  ),
                 ),
-              ),
-            )),
+              )),
+        ),
 
         Padding(
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
