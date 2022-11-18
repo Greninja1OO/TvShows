@@ -22,15 +22,16 @@ class _SecondPageState extends State<SecondPage> {
     appBar: AppBar(
     title: Text("Cast"),
     ),
-    body: Column(
+    body: SingleChildScrollView(child:
+    Column(
       children: [
         FutureBuilder(
         future: api(widget.id.toString()),
         builder: (context, snapshot) {if (snapshot.hasData ) return Column(children:[ for(var item in snapshot.data)new Row(children:[Image.network(
-          item['person']['image']['original'],height: 30,width: 30,),Text(item['person']['name'].toString(),style: TextStyle(color: Colors.white),)])]);
+          item['person']['image']['original'],height: 50,width: 50,),Text(item['person']['name'].toString(),style: TextStyle(color: Colors.white),)])]);
           else return Container();})
       ],
-    ));
+    )));
   }
 }
 //

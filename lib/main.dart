@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Urban Dictionary"),
+        title: Text("TV Maze"),
       ),
       body: SingleChildScrollView(child: Column(
         children: [  Column(children:[
@@ -77,54 +77,126 @@ class _MyHomePageState extends State<MyHomePage> {
         end=snapshot.data['ended'];
       id=snapshot.data['apiid'];
       return Column(children: [
+
         Text(snapshot.data['name'.toString()], style: TextStyle(
             fontSize: 50, fontWeight: FontWeight.bold, color: Colors.black),),
-        Image.network(
-            snapshot.data['image'],height: 300,width: 300,),
-        Text("Language: "+snapshot.data["lang"]),
-        Text("Genre: "+snapshot.data['genre'].join(',')),
-        Text("Status:"+snapshot.data['status']),
-        Text("Premiered:"+snapshot.data['premiered']),
-        Text('Ended: '+end),
-        Text('Runtime:'+snapshot.data['runtime'].toString()),
-        Text("Day:"+snapshot.data['day'][0]),
-        Text('Time:'+snapshot.data['time']),
-        Row(mainAxisAlignment: MainAxisAlignment.center,children: [
-          Icon(Icons.star,color: Colors.yellow,),Text(snapshot.data['rating'].toString()+"/10")
-        ]),
-        Text('Country:'+snapshot.data['country']),
-        Text('Timezone: '+snapshot.data['timezone']),
-        Text('Summary:'+snapshot.data['summary'].replaceAll('<p',"").replaceAll(r'</p',"").replaceAll('<b>',"").replaceAll('</b',"").replaceAll('<p>',"").replaceAll('>',"")),
-        ElevatedButton(
-          style: ButtonStyle(
-              backgroundColor:
-              MaterialStateProperty.all(Color(0xff63666A))),
-          onPressed: (() {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context)=>SecondPage(id:id)));
-            setState(() {
+        Row(
+          children: [
+            Image.network(
+                snapshot.data['image'],height: 500,width: 500,),
 
-            });
-          }),
-          child: const Text(
-            "Go",
-            style: TextStyle(color: Colors.white, fontSize: 30),
+        Container(
+
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start
+            ,children: [
+               Text("Language: "+snapshot.data["lang"],
+                  style: TextStyle(
+                    fontSize: 30
+                  ),
+
+                ),
+
+              Text("Genre: "+snapshot.data['genre'].join(','),
+                style: TextStyle(
+                    fontSize: 30
+                ),
+              ),
+              Text("Status:"+snapshot.data['status'],
+                style: TextStyle(
+                    fontSize: 30
+                ),
+              ),
+              Text("Premiered:"+snapshot.data['premiered'],
+                style: TextStyle(
+                    fontSize: 30
+                ),
+              ),
+              Text('Ended: '+end,
+                style: TextStyle(
+                    fontSize: 30
+                ),
+              ),
+              Text('Runtime:'+snapshot.data['runtime'].toString(),
+                style: TextStyle(
+                    fontSize: 30
+                ),
+              ),
+              Text("Day:"+snapshot.data['day'][0],
+                style: TextStyle(
+                    fontSize: 30
+                ),
+              ),
+              Text('Time:'+snapshot.data['time'],
+                style: TextStyle(
+                    fontSize: 30
+                ),
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.center,children: [
+                Icon(Icons.star,color: Colors.yellow,),Text(snapshot.data['rating'].toString()+"/10")
+              ]),
+              Text('Country:'+snapshot.data['country'],
+                style: TextStyle(
+                    fontSize: 30
+                ),
+              ),
+              Text('Timezone: '+snapshot.data['timezone'],
+                style: TextStyle(
+                    fontSize: 30
+                ),
+              ),
+            ],
           ),
         ),
-        ElevatedButton(
-          style: ButtonStyle(
-              backgroundColor:
-              MaterialStateProperty.all(Color(0xff63666A))),
-          onPressed: (() {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context)=>Thirdpage(id:id)));
-            setState(() {
+          ],
+        ),
+        Container(
+            child:
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+              child: Text('Summary:'+snapshot.data['summary'].replaceAll('<p',"").replaceAll(r'</p',"").replaceAll('<b>',"").replaceAll('</b',"").replaceAll('<p>',"").replaceAll('>',""),
+                style: TextStyle(
+                    fontSize: 30
+                ),
+              ),
+            )),
 
-            });
-          }),
-          child: const Text(
-            "Go2",
-            style: TextStyle(color: Colors.white, fontSize: 30),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+          child: ElevatedButton(
+            style: ButtonStyle(
+                backgroundColor:
+                MaterialStateProperty.all(Color(0xff63666A))),
+            onPressed: (() {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context)=>SecondPage(id:id)));
+              setState(() {
+
+              });
+            }),
+            child: const Text(
+              "Cast",
+              style: TextStyle(color: Colors.white, fontSize: 30),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+          child: ElevatedButton(
+            style: ButtonStyle(
+                backgroundColor:
+                MaterialStateProperty.all(Color(0xff63666A))),
+            onPressed: (() {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context)=>Thirdpage(id:id)));
+              setState(() {
+
+              });
+            }),
+            child: const Text(
+              "Crew",
+              style: TextStyle(color: Colors.white, fontSize: 30),
+            ),
           ),
         ),
 

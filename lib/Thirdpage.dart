@@ -22,7 +22,8 @@ class _ThirdpageState extends State<Thirdpage> {
     appBar: AppBar(
     title: Text("Crew"),
     ),
-        body: Column(
+        body: SingleChildScrollView(child:
+        Column(
           children: [
             FutureBuilder(
                 future: api(widget.id.toString()),
@@ -30,15 +31,18 @@ class _ThirdpageState extends State<Thirdpage> {
                   return Column(children:[ for(var item in snapshot.data) Row(
                     children:[
                       if(item['person']['image']==null)
-                        Container(height: 30,width: 30,color: Colors.black,)
+                        Container(height: 50,width: 50,color: Colors.black,)
                       else
-                        Image.network(
-                        item['person']['image']['original']
-                        ,height: 30,width: 30,)
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(50, 10, 10, 10),
+                          child: Image.network(
+                          item['person']['image']['original']
+                          ,height: 50,width: 50,),
+                        )
                   ,Text(item['person']['name'].toString(),style: TextStyle(color: Colors.white),)])]);
                 else return Container();})
           ],
-        ));
+        )));
   }
 }
 //
